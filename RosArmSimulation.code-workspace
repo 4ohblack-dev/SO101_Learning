@@ -1,0 +1,42 @@
+{
+  "folders": [
+    {
+      "name": "RosArmSimulation (Unity + ROS 2)",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "search.exclude": {
+      "**/Library/**": true,
+      "**/Temp/**": true,
+      "**/Logs/**": true,
+      "**/UserSettings/**": true,
+      "**/Backups/**": true,
+      "**/build/**": true,
+      "**/install/**": true,
+      "**/log/**": true
+    },
+    "files.watcherExclude": {
+      "**/Library/**": true,
+      "**/Temp/**": true,
+      "**/Logs/**": true,
+      "**/ros2_ws/build/**": true,
+      "**/ros2_ws/install/**": true,
+      "**/ros2_ws/log/**": true
+    },
+    "terminal.integrated.profiles.windows": {
+      "ROS 2 - Ubuntu 22.04": {
+        "path": "${env:WINDIR}\\System32\\wsl.exe",
+        "args": ["--distribution", "Ubuntu-22.04"]
+      }
+    },
+    "terminal.integrated.defaultProfile.windows": "ROS 2 - Ubuntu 22.04"
+  },
+  "extensions": {
+    "recommendations": [
+      "visualstudiotoolsforunity.vstuc",
+      "ms-python.python",
+      "ms-vscode-remote.remote-wsl"
+    ]
+  }
+}
