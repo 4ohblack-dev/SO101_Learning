@@ -1219,6 +1219,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8097034289060599500, guid: 24c4c28fc910094468011587076ac4e0, type: 3}
   m_PrefabInstance: {fileID: 1853592694}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &708861023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 708861025}
+  - component: {fileID: 708861024}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &708861024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708861023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ddc73671b5044d09cc8faebe1435107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PS4JoyPublisher
+  topicName: /joy
+--- !u!4 &708861025
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708861023}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.00287, y: -0, z: -0.07785}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &720011062
 GameObject:
   m_ObjectHideFlags: 8
@@ -1877,7 +1922,8 @@ GameObject:
   m_Component:
   - component: {fileID: 998623247}
   - component: {fileID: 998623246}
-  - component: {fileID: 998623245}
+  - component: {fileID: 998623249}
+  - component: {fileID: 998623248}
   m_Layer: 0
   m_Name: so_arm100
   m_TagString: robot
@@ -1885,28 +1931,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &998623245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 998623244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d607ea46a579d44c4b19a6322ce4b9b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Robotics.UrdfImporter::Unity.Robotics.UrdfImporter.Control.Controller
-  selectedJoint: 
-  selectedIndex: 0
-  control: 0
-  stiffness: 0
-  damping: 0
-  forceLimit: 0
-  speed: 5
-  torque: 100
-  acceleration: 5
-  highLightColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &998623246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1940,6 +1964,51 @@ Transform:
   - {fileID: 1883230459}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &998623248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998623244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b185f887dc7bb13479ae36ab0556a659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SO100RosBridge
+  driver: {fileID: 998623249}
+  commandTopic: /so100/sim/joint_commands
+  stateTopic: /so100/sim/joint_states
+  publishRateHz: 20
+--- !u!114 &998623249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998623244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e8afe5d34c30c42949fbc4efefd1e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SO100ArticulationDriver
+  joints:
+  - rosName: shoulder_pan
+    body: {fileID: 132492299}
+  - rosName: shoulder_lift
+    body: {fileID: 2105873264}
+  - rosName: elbow_flex
+    body: {fileID: 702351292}
+  - rosName: wrist_flex
+    body: {fileID: 1785837366}
+  - rosName: wrist_roll
+    body: {fileID: 820020248}
+  - rosName: gripper
+    body: {fileID: 820067614}
+  stiffness: 100
+  damping: 10
+  forceLimit: 5
+  targetSpeedRadPerSec: 0.5
 --- !u!1 &1003177104
 GameObject:
   m_ObjectHideFlags: 0
@@ -3684,3 +3753,4 @@ SceneRoots:
   - {fileID: 203844589}
   - {fileID: 998623247}
   - {fileID: 1239039956}
+  - {fileID: 708861025}
