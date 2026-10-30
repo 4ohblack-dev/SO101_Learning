@@ -15,13 +15,13 @@ namespace so100_control{
     public:
         JoyTeleop();
     private:
-        using joy = sensor_msgs::msg::joy;
-        using jointState = sensor_msgs::msg::jointState;
+        using Joy = sensor_msgs::msg::Joy;
+        using JointState = sensor_msgs::msg::JointState;
         using Clock = std::chrono::steady_clock;
         static constexpr std::size_t kJointCount = 6;
 
-        void onJoy(const joy::SharedPtr message);
-        void onState(const jointState::SharedPtr message);
+        void onJoy(const Joy::SharedPtr message);
+        void onState(const JointState::SharedPtr message);
         void onTimer();
 
         double applyDeadzone(double value) const;
@@ -69,5 +69,5 @@ namespace so100_control{
         rclcpp::Subscription<JointState>::SharedPtr state_subscription_;
         rclcpp::Publisher<JointState>::SharedPtr command_publisher_;
         rclcpp::TimerBase::SharedPtr timer_;
-    }
-};
+    };
+}

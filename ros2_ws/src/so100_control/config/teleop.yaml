@@ -1,0 +1,19 @@
+so100_joy_teleop:
+  ros__parameters:
+    use_sim_time: false
+    joy_topic: "/joy"
+    state_topic: "/so100/sim/joint_states"
+    command_topic: "/so100/sim/joint_commands"
+
+    # スティック中央付近の入力を無視する範囲。
+    deadzone: 0.15
+    joy_timeout_sec: 0.3
+    state_timeout_sec: 0.5
+
+    # 目標角度が現在角度から先行できる幅（rad）。
+    max_target_lead_rad: 0.1
+
+    # shoulder_pan, shoulder_lift, elbow_flex,
+    # wrist_flex, wrist_roll, gripper の順。速度はrad/s。
+    speeds: [0.3, 0.3, 0.3, 0.3, 0.3, 0.3]
+    directions: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
